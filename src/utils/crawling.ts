@@ -28,8 +28,15 @@ export async function crawling(keyword: string) {
     });
   }
 
+  interface IData {
+    company: string;
+    title: string;
+    href: string;
+    date: string;
+  }
+
   //결과 값
-  const result = [] as object[];
+  const result = [] as IData[];
   companyCode.forEach((code) => {});
   for (let i = 0; i < companyCode.length; i++) {
     // DOM 조작을 위한 selector 설정

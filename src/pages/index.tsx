@@ -21,7 +21,7 @@ export default function Home() {
   const onClick = async () => {
     setKeyWord(value);
     setLoading(true);
-    await crawling(keyWord);
+    const data: IData[] = await crawling(keyWord);
     setLoading(false);
     setData(data);
     setValue("");
