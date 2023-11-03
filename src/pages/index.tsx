@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Parser from "html-react-parser";
+import { crawling } from "@/utils/crawling";
 
 interface IData {
   company: string;
@@ -20,9 +21,7 @@ export default function Home() {
   const onClick = async () => {
     setKeyWord(value);
     setLoading(true);
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_HOST}/api/crawling?keyword=${value}`
-    );
+    await crawling(keyWord);
     setLoading(false);
     setData(data);
     setValue("");
