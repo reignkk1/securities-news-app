@@ -23,9 +23,9 @@ export default async function handler(
     return content;
   }
 
-  // 회사 코드
+  // 회사 코드 크롤링 해오기
   const companyCode = [] as any[];
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 43; i++) {
     const companySelector = cheerio.load(
       await crawlingHTML(`${DOMAIN}/sise/sise_market_sum.naver?&page=${i + 1}`)
     );
@@ -33,8 +33,6 @@ export default async function handler(
       companyCode.push(companySelector(item).attr("href")?.slice(-6));
     });
   }
-
-  console.log(companyCode);
 
   //결과 값
   const result = [] as object[];
@@ -63,8 +61,6 @@ export default async function handler(
     });
   }
 
-  // 회사 수 설정 할 수 있게 => page 수
-  // 코스닥 코스피 선택 할 수 있게
   return res
     .setHeader("Access-Control-Allow-Origin", "*")
     .status(200)
