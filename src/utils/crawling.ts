@@ -12,6 +12,10 @@ export async function crawling(keyword: string) {
       method: "GET",
       responseType: "arraybuffer",
       withCredentials: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      },
     });
     const content = await iconv.decode(html, "EUC-KR").toString();
     return content;
