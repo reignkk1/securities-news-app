@@ -25,7 +25,7 @@ export default async function handler(
 
   // 회사 코드 크롤링 해오기
   const companyCode = [] as any[];
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 10; i++) {
     const companySelector = cheerio.load(
       await crawlingHTML(`${DOMAIN}/sise/sise_market_sum.naver?&page=${i + 1}`)
     );
