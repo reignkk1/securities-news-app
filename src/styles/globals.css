@@ -1,6 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 .container {
-  width: 500px;
+  width: 600px;
   margin: 0 auto;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 }
 
 .item_list {
@@ -16,4 +23,23 @@
   text-decoration: none;
 
   font-weight: bold;
+}
+
+.search_container {
+  text-align: center;
+}
+
+.search_container button {
+  margin-left: 5px;
+  cursor: pointer;
+}
+.search_container form {
+  margin-bottom: 10px;
+}
+.search_container input {
+  line-height: 20px;
+  height: 20px;
+  padding: 2px;
+  border: 1px solid;
+  outline: none;
 }
