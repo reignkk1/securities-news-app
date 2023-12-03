@@ -1,16 +1,26 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
 }
 
 .container {
   width: 600px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
   @media screen and (max-width: 768px) {
     width: 90%;
   }
 }
 
 .item_list {
+  margin-top: 20px;
   margin-bottom: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   padding-top: 10px;
@@ -21,17 +31,21 @@
 
 .item_list a {
   text-decoration: none;
-
   font-weight: bold;
 }
-
-.search_container {
-  text-align: center;
+.item_company {
+  font-weight: bold;
 }
 
 .search_container button {
   margin-left: 5px;
   cursor: pointer;
+  background: none;
+  border: none;
+  background-color: #0078ff;
+  color: white;
+  padding: 0.48rem;
+  border-radius: 0.3rem;
 }
 .search_container form {
   margin-bottom: 10px;
@@ -39,7 +53,8 @@
 .search_container input {
   line-height: 20px;
   height: 20px;
-  padding: 2px;
-  border: 1px solid;
+  padding: 0.9rem 0.7rem;
+  font-size: 1rem;
   outline: none;
+  border-radius: 0.3rem;
 }

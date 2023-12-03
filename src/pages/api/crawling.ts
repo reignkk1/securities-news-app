@@ -9,6 +9,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const keyword: any = req.query.keyword;
+  const page = req.query.page;
 
   const DOMAIN = "https://finance.naver.com";
 
@@ -25,18 +26,16 @@ export default async function handler(
 
   // 회사 코드 크롤링 해오기
   const companyCode = [] as any[];
-  for (let i = 0; i < 3; i++) {
-    const companySelector = cheerio.load(
-      await crawlingHTML(`${DOMAIN}/sise/sise_market_sum.naver?&page=${i + 1}`)
-    );
-    companySelector("tbody tr .center a").each((_, item) => {
-      companyCode.push(companySelector(item).attr("href")?.slice(-6));
-    });
-  }
+
+  const companySelector = cheerio.load(
+    await crawlingHTML(`${DOMAIN}/sise/sise_market_sum.naver?&page=${page}`)
+  );
+  companySelector("tbody tr .center a").each((_, item) => {
+    companyCode.push(companySelector(item).attr("href")?.slice(-6));
+  });
 
   //결과 값
   const result = [] as object[];
-  companyCode.forEach((code) => {});
   for (let i = 0; i < companyCode.length; i++) {
     // DOM 조작을 위한 selector 설정
     const selector = cheerio.load(
